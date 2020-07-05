@@ -8,6 +8,7 @@
 @IDE  ： PyCharm
 """
 from transitions import Machine
+from transitions import State
 from pprint import pprint
 
 
@@ -16,7 +17,7 @@ class Matter(object):
 
 model = Matter()
 
-states=['solid', 'liquid', 'gas', 'plasma'] # 定义四种状态 : 固体 液体 气体 等离子体
+states=[State(name='solid'), 'liquid', 'gas', 'plasma'] # 定义四种状态 : 固体 液体 气体 等离子体
 
 # trigger参数定义新触发方法的名称
 transitions = [
@@ -50,9 +51,8 @@ machine = Machine(
 )
 
 # Test
-# print(model.state)    # solid
-# model.melt()
-# print(model.state)   # liquid
+print(model.state)    # solid
+model.melt()
+print(model.state)   # liquid
 # model.evaporate()
 # print(model.state)
-pprint(dir(machine))
